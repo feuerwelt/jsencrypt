@@ -168,29 +168,15 @@ RSAKey.prototype.getPrivateBaseKeyB64 = function () {
 RSAKey.prototype.getPublicBaseKey = function () {
   var options = {
     'array': [
-      new KJUR.asn1.DERObjectIdentifier({'oid': '1.2.840.113549.1.1.1'}), //RSA Encryption pkcs #1 oid
-      new KJUR.asn1.DERNull()
-    ]
-  };
-  var first_sequence = new KJUR.asn1.DERSequence(options);
-
-  options = {
-    'array': [
+      new KJUR.asn1.DERInteger({'int': 0}),
       new KJUR.asn1.DERInteger({'bigint': this.n}),
-      new KJUR.asn1.DERInteger({'int': this.e})
-    ]
-  };
-  var second_sequence = new KJUR.asn1.DERSequence(options);
-
-  options = {
-    'hex': '00' + second_sequence.getEncodedHex()
-  };
-  var bit_string = new KJUR.asn1.DERBitString(options);
-
-  options = {
-    'array': [
-      first_sequence,
-      bit_string
+      new KJUR.asn1.DERInteger({'int': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e}),
+      new KJUR.asn1.DERInteger({'bigint': this.e})
     ]
   };
   var seq = new KJUR.asn1.DERSequence(options);

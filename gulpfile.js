@@ -54,10 +54,10 @@ gulp.task('scripts', function() {
   return gulp.src(files)
     .pipe(concat('jsencrypt.js'))
     .pipe(wrap({src: 'src/template.txt'}, {version: packageJson.version}, {variable: 'data'}))
-    .pipe(gulp.dest('bin/'))
+    .pipe(gulp.dest('dist/'))
     .pipe(rename('jsencrypt.min.js'))
     .pipe(uglify({preserveComments: 'license'}))
-    .pipe(gulp.dest('bin'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build', ['lint', 'scripts', 'license']);
